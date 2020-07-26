@@ -21,13 +21,11 @@ class BasicScreen extends StatelessWidget {
   }
 
   Widget _buildImage() {
-    return Container(
+    return Image.asset(
+      'assets/landscape.jpg',
+      height: 250,
       width: double.infinity,
-      child: Image.asset(
-        'assets/landscape.jpg',
-        height: 250,
-        fit: BoxFit.cover,
-      ),
+      fit: BoxFit.cover,
     );
   }
 
