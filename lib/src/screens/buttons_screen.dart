@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 class ButtonsScreen extends StatelessWidget {
   @override
@@ -22,6 +21,7 @@ class ButtonsScreen extends StatelessWidget {
           )
         ],
       ),
+      bottomNavigationBar: _bottomNavigationBar(context),
     );
   }
 
@@ -95,6 +95,33 @@ class ButtonsScreen extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  _bottomNavigationBar(BuildContext context) {
+    return Theme(
+      data: Theme.of(context).copyWith(
+        canvasColor: Color.fromRGBO(55, 57, 84, 1.0),
+        primaryColor: Colors.pinkAccent,
+        textTheme: Theme.of(context).textTheme.copyWith(
+            caption: TextStyle(color: Color.fromRGBO(116, 117, 152, 1.0))),
+      ),
+      child: BottomNavigationBar(
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.calendar_today),
+            title: Container(),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.bubble_chart),
+            title: Container(),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.supervised_user_circle),
+            title: Container(),
+          ),
+        ],
       ),
     );
   }
