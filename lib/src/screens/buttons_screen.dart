@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
@@ -16,6 +17,7 @@ class ButtonsScreen extends StatelessWidget {
             child: Column(
               children: <Widget>[
                 _buildTitles(context),
+                _buildRoundedButtons(),
               ],
             ),
           )
@@ -99,7 +101,7 @@ class ButtonsScreen extends StatelessWidget {
     );
   }
 
-  _bottomNavigationBar(BuildContext context) {
+  Widget _bottomNavigationBar(BuildContext context) {
     return Theme(
       data: Theme.of(context).copyWith(
         canvasColor: Color.fromRGBO(55, 57, 84, 1.0),
@@ -122,6 +124,71 @@ class ButtonsScreen extends StatelessWidget {
             title: Container(),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildRoundedButtons() {
+    return Table(
+      children: [
+        TableRow(
+          children: [
+            _buildRoundedButton(Colors.blue, Icons.border_all, 'General'),
+            _buildRoundedButton(
+                Colors.purpleAccent, Icons.directions_bus, 'Transport')
+          ],
+        ),
+        TableRow(
+          children: [
+            _buildRoundedButton(Colors.pinkAccent, Icons.shop, 'Shopping'),
+            _buildRoundedButton(
+                Colors.amberAccent, Icons.monetization_on, 'Money')
+          ],
+        ),
+        TableRow(
+          children: [
+            _buildRoundedButton(
+                Colors.lightBlueAccent, Icons.movie_filter, 'Entertainment'),
+            _buildRoundedButton(
+                Colors.green, Icons.local_grocery_store, 'Grocery')
+          ],
+        ),
+        TableRow(
+          children: [
+            _buildRoundedButton(Colors.orange, Icons.insert_drive_file, 'File'),
+            _buildRoundedButton(Colors.yellow, Icons.cloud, 'Cloud')
+          ],
+        ),
+      ],
+    );
+  }
+
+  Widget _buildRoundedButton(Color color, IconData icon, String text) {
+    return Container(
+      margin: EdgeInsets.all(15.0),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(20.0),
+        child: BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+          child: Container(
+            height: 180.0,
+            decoration: BoxDecoration(
+              color: Color.fromRGBO(62, 66, 107, 0.7),
+              borderRadius: BorderRadius.circular(20.0),
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                CircleAvatar(
+                  backgroundColor: color,
+                  radius: 35.0,
+                  child: Icon(icon, size: 30.0),
+                ),
+                Text(text, style: TextStyle(color: color)),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }
