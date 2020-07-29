@@ -1,14 +1,25 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class ButtonsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    /* SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light.copyWith(
+      statusBarColor: Colors.white,
+    )); */
     return Scaffold(
       body: Stack(
         children: <Widget>[
           _buildBackground(context),
+          SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                _buildTitles(context),
+              ],
+            ),
+          )
         ],
       ),
     );
@@ -58,6 +69,33 @@ class ButtonsScreen extends StatelessWidget {
           child: pinkBox,
         ),
       ],
+    );
+  }
+
+  Widget _buildTitles(BuildContext context) {
+    return SafeArea(
+      child: Container(
+        padding: EdgeInsets.all(20.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Text(
+              'Classify transaction',
+              style: Theme.of(context)
+                  .textTheme
+                  .headline4
+                  .copyWith(color: Colors.white, fontWeight: FontWeight.bold),
+            ),
+            Text(
+              'Classify this transaction into a particular category',
+              style: Theme.of(context)
+                  .textTheme
+                  .subtitle1
+                  .copyWith(color: Colors.white),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
