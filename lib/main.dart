@@ -11,6 +11,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Designs',
+      // change initialRoute if you want to see the other screens
       initialRoute: 'buttons',
       routes: {
         'basic': (BuildContext context) => BasicScreen(),
